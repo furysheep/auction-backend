@@ -25,15 +25,11 @@ export class AuctionController {
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
-    const auction = await this.auctionService.findOne(+id);
-    if (!auction) {
-      throw new BadRequestException('Invalid auction');
-    }
-    return auction;
+    return this.auctionService.findOne(+id);
   }
 
   @Post(':id')
   create(@Param('id') id: string, @Body() createBidDto: CreateBidDto) {
-    return this.auctionService.createBid(id, createBidDto);
+    return this.auctionService.createBid(+id, createBidDto);
   }
 }

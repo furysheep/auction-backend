@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
-import { AuctionBid } from './bid.schema';
+import { AuctionBid, AuctionBidDocument } from './bid.schema';
 
 export type AuctionDocument = Auction & mongoose.Document;
 
@@ -31,7 +31,7 @@ export class Auction {
   auctionItemAddress: string;
 
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'AuctionBid' })
-  bids: AuctionBid[];
+  bids: AuctionBidDocument[];
 }
 
 export const AuctionSchema = SchemaFactory.createForClass(Auction);

@@ -108,7 +108,7 @@ export class AuctionService {
   }
 
   async findOne(id: number) {
-    const auction = this.auctionModel.findOne({ auctionId: id }).exec();
+    const auction = await this.auctionModel.findOne({ auctionId: id }).exec();
     if (!auction) {
       throw new BadRequestException('Invalid auction');
     }

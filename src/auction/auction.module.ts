@@ -8,6 +8,9 @@ import { AuctionBid, AuctionBidSchema } from './schemas/bid.schema';
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: Auction.name, schema: AuctionSchema }]),
+    MongooseModule.forFeature([
+      { name: AuctionBid.name, schema: AuctionBidSchema },
+    ]),
   ],
   controllers: [AuctionController],
   providers: [AuctionService],
